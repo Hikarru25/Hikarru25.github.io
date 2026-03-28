@@ -2,7 +2,8 @@
 
 **Author:** Jenny  
 **Date:** March 28, 2026  
-**Version:** 1.0
+**Version:** 1.0  
+**Video #1:** https://youtube.com/shorts/2I9Ib14LLcM?feature=share
 
 ---
 

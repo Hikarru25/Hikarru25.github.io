@@ -30,3 +30,8 @@ pnpm-debug.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# Submission — must never be committed to GitHub
+submission-summary.md
+submission-summary.txt
+submission-summary.docx
