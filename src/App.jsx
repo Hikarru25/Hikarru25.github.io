@@ -18,6 +18,7 @@ import LinksPage from './pages/LinksPage'
 import ContactPage from './pages/ContactPage'
 import LoginPage from './pages/LoginPage'
 import BackOfficePage from './pages/BackOfficePage'
+import ProtectedRoute from './components/ui/ProtectedRoute'
 
 export default function App() {
   return (
@@ -31,7 +32,13 @@ export default function App() {
 
         {/* Secret/protected pages — still wrapped in MainLayout for consistent shell */}
         <Route path="/login" element={<MainLayout><LoginPage /></MainLayout>} />
-        <Route path="/backoffice" element={<MainLayout><BackOfficePage /></MainLayout>} />
+
+        {/* /backoffice is wrapped in ProtectedRoute — redirects to /login if not authenticated */}
+        <Route path="/backoffice" element={
+          <ProtectedRoute>
+            <MainLayout><BackOfficePage /></MainLayout>
+          </ProtectedRoute>
+        } />
       </Routes>
     </BrowserRouter>
   )
