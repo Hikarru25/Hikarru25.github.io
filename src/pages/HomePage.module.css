@@ -1,0 +1,206 @@
+/* HomePage.module.css
+   All styles are scoped to HomePage.jsx via CSS Modules.
+   CSS Modules means class names like `.hero` become unique hashes at build time
+   → zero risk of clashing with other components' styles.
+*/
+
+/* ── Page wrapper ─────────────────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Hero Section ─────────────────────────────────────────────────────────── */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 5rem 6rem;
+  min-height: 90vh;
+}
+
+.heroText {
+  flex: 1;
+  max-width: 560px;
+}
+
+.heroGreeting {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.heroName {
+  font-size: clamp(3rem, 7vw, 5.5rem); /* clamp = responsive font size: min, preferred, max */
+  font-weight: 800;
+  line-height: 1;
+  margin: 0 0 0.4rem;
+  color: var(--text-h);
+}
+
+.heroTitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.heroBio {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+
+.heroBtn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.heroBtn:hover {
+  opacity: 0.85;
+}
+
+/* Hero image area */
+.heroImageWrapper {
+  flex-shrink: 0;
+}
+
+/* Placeholder shown until a real AI-generated image is added */
+.heroImagePlaceholder {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: var(--accent-bg);
+  border: 3px solid var(--accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImageInitial {
+  font-size: 8rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+
+/* Real image class — uncomment in JSX when the AI image is ready */
+.heroImage {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-border);
+}
+
+/* ── Shared Section Styles ────────────────────────────────────────────────── */
+.section {
+  padding: 5rem 6rem;
+}
+
+/* Alternate background for soft skills section — creates visual separation */
+.sectionAlt {
+  background: var(--accent-bg);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-h);
+  margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+/* ── Skills Grid ──────────────────────────────────────────────────────────── */
+/* auto-fill + minmax = columns automatically wrap at 240px min width */
+/* This means 4 cols on desktop, 2 on tablet, 1 on mobile — no media queries needed */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Skill Card ───────────────────────────────────────────────────────────── */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.75rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.cardIcon {
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.cardTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin-bottom: 0.5rem;
+}
+
+.cardText {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* ── Responsive — Mobile (≤ 768px) ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Hero stacks vertically on mobile, image goes below text */
+  .hero {
+    flex-direction: column-reverse; /* image on top, text below */
+    padding: 3rem 1.5rem;
+    min-height: unset;
+    text-align: center;
+  }
+
+  .heroBio {
+    max-width: 100%;
+  }
+
+  .heroImagePlaceholder,
+  .heroImage {
+    width: 180px;
+    height: 180px;
+  }
+
+  .heroImageInitial {
+    font-size: 5rem;
+  }
+
+  .section {
+    padding: 3rem 1.5rem;
+  }
+
+  /* On mobile the grid becomes a single column */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
