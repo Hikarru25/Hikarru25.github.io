@@ -3,13 +3,13 @@
 // This pattern avoids repeating Header/Footer in every page component
 import Header from './Header'
 import Footer from './Footer'
+import styles from './MainLayout.module.css'
 
 export default function MainLayout({ children }) {
   return (
-    <div className="layout">
+    <div className={styles.layout}>
       <Header />
-      {/* children = whatever page is currently active (injected by React Router) */}
-      <main className="main-content">{children}</main>
+      <main className={styles.mainContent}>{children}</main>
       <Footer />
     </div>
   )
