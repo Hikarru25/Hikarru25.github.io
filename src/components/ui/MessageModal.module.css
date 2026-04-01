@@ -1,0 +1,104 @@
+/* MessageModal.module.css */
+
+/* Full-screen dark overlay — sits above everything */
+.overlay {
+  position: fixed;
+  inset: 0; /* shorthand for top/right/bottom/left: 0 */
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+/* The white modal box */
+.modal {
+  background: var(--color-surface, #ffffff);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 540px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Top row: title + X button */
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.modalTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text, #1a1a2e);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--color-text-muted, #666);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.closeButton:hover {
+  background: var(--color-border, #e2e8f0);
+}
+
+/* Each label + value row */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted, #666);
+}
+
+.value {
+  font-size: 1rem;
+  color: var(--color-text, #1a1a2e);
+}
+
+.emailLink {
+  font-size: 1rem;
+  color: var(--color-accent, #6c63ff);
+  text-decoration: none;
+}
+
+.emailLink:hover {
+  text-decoration: underline;
+}
+
+/* Message body section */
+.messageBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.messageText {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text, #1a1a2e);
+  white-space: pre-wrap; /* preserves line breaks from textarea */
+  background: var(--color-bg, #f8f9fa);
+  padding: 1rem;
+  border-radius: 8px;
+}
