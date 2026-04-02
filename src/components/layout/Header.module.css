@@ -90,3 +90,35 @@
   border-color: var(--accent);
   color: var(--accent);
 }
+
+/* Controls wrapper — groups theme + language buttons */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+/* Language toggle button */
+.langToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 10px;
+  background: none;
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.langToggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}

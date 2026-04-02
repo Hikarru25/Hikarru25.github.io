@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "portfolio": "Portfolio",
+    "links": "Liens",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Salut, je suis",
+    "name": "Jenny",
+    "role": "Développeuse Full Stack",
+    "bio": "Avec 15 ans d'expérience en stratégie technologique dans le secteur de la santé, je construis maintenant des produits full-stack de bout en bout — de la structure de base de données à l'interface utilisateur. Je fais le pont entre les besoins d'affaires et l'exécution technique.",
+    "cta": "Contactez-moi",
+    "techTitle": "Compétences Techniques",
+    "techSubtitle": "Outils et technologies que j'utilise",
+    "softTitle": "Mes atouts",
+    "softSubtitle": "Au-delà du code"
+  },
+  "portfolio": {
+    "title": "Portfolio & CV",
+    "subtitle": "Mon parcours, mon expérience et les projets que j'ai réalisés.",
+    "downloadCV": "Télécharger le CV",
+    "downloadFull": "Télécharger le CV complet (PDF)",
+    "ctaText": "Tu veux en savoir plus ?",
+    "educationTitle": "Formation",
+    "workTitle": "Expérience Professionnelle",
+    "projectsTitle": "Projets"
+  },
+  "links": {
+    "title": "Liens",
+    "subtitle": "Retrouvez-moi sur le web"
+  },
+  "contact": {
+    "title": "Me Contacter",
+    "subtitle": "Un projet en tête ou simplement envie de dire bonjour ? Remplissez le formulaire ci-dessous.",
+    "nameLabel": "Nom",
+    "emailLabel": "Courriel",
+    "messageLabel": "Message",
+    "namePlaceholder": "Votre nom",
+    "emailPlaceholder": "votre@email.com",
+    "messagePlaceholder": "De quoi voulez-vous me parler ?",
+    "submit": "Envoyer le message",
+    "sending": "Envoi en cours…",
+    "success": "Message envoyé ! Je te répondrai bientôt.",
+    "error": "Une erreur est survenue. Veuillez réessayer.",
+    "errName": "Le nom est requis",
+    "errEmail": "L'adresse courriel est requise",
+    "errEmailFormat": "Veuillez entrer une adresse courriel valide",
+    "errMessage": "Le message est requis"
+  },
+  "footer": {
+    "copyright": "© 2026 Jenny. Tous droits réservés."
+  }
+}

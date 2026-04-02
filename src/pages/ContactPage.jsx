@@ -18,27 +18,28 @@
 import { useState } from 'react'
 import { CheckCircle, XCircle } from 'lucide-react'
 import { supabase } from '../lib/supabaseClient'
+import { useLanguage } from '../hooks/useLanguage'
 import styles from './ContactPage.module.css'
 
 // ─── Validation ───────────────────────────────────────────────────────────────
 // Pure function — no React, no side effects, just returns an errors object
 // Returns {} if everything is valid, or { fieldName: "error message" } for each issue
-function validate({ name, email, message }) {
+function validate({ name, email, message }, t) {
   const errors = {}
 
   if (!name.trim()) {
-    errors.name = 'Name is required'
+    errors.name = t('contact.errName')
   }
 
   if (!email.trim()) {
-    errors.email = 'Email is required'
+    errors.email = t('contact.errEmail')
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     // Regex breakdown: one or more non-space/@ chars, then @, then domain, then .tld
-    errors.email = 'Please enter a valid email address'
+    errors.email = t('contact.errEmailFormat')
   }
 
   if (!message.trim()) {
-    errors.message = 'Message is required'
+    errors.message = t('contact.errMessage')
   }
 
   return errors
@@ -61,6 +62,8 @@ export default function ContactPage() {
   // submitError: holds the error message string if the INSERT fails
   const [submitError, setSubmitError] = useState(null)
 
+  const { t } = useLanguage()
+
   // ── handleChange ────────────────────────────────────────────────────────────
   // Called on every keystroke in any field
   // Uses the input's `name` attribute to know which field to update
@@ -81,7 +84,7 @@ export default function ContactPage() {
     e.preventDefault() // Prevent the browser's default "reload page on submit" behavior
 
     // Step 1: validate
-    const errors = validate(formData)
+    const errors = validate(formData, t)
     if (Object.keys(errors).length > 0) {
       setFieldErrors(errors)
       return // Stop here — don't touch Supabase with invalid data
@@ -107,7 +110,7 @@ export default function ContactPage() {
       setTimeout(() => setSuccess(false), 4000)
     } catch (err) {
       // Step 4b: FAILURE — show red error, keep form data so user can retry
-      setSubmitError('Something went wrong. Please try again.')
+      setSubmitError(t('contact.error'))
     } finally {
       // finally runs whether it succeeded or failed — always stop loading
       setLoading(false)
@@ -118,10 +121,8 @@ export default function ContactPage() {
   return (
     <div className={styles.page}>
       <section className={styles.pageHeader}>
-        <h1 className={styles.pageTitle}>Get in Touch</h1>
-        <p className={styles.pageSubtitle}>
-          Have a project in mind or just want to say hello? Fill out the form below.
-        </p>
+        <h1 className={styles.pageTitle}>{t('contact.title')}</h1>
+        <p className={styles.pageSubtitle}>{t('contact.subtitle')}</p>
       </section>
 
       <section className={styles.formSection}>
@@ -129,7 +130,7 @@ export default function ContactPage() {
         {success && (
           <div className={styles.successBanner} role="status">
             <CheckCircle size={20} />
-            <span>Message sent! I'll get back to you soon.</span>
+            <span>{t('contact.success')}</span>
           </div>
         )}
 
@@ -148,7 +149,7 @@ export default function ContactPage() {
 
           {/* Name Field */}
           <div className={styles.field}>
-            <label htmlFor="name" className={styles.label}>Name</label>
+            <label htmlFor="name" className={styles.label}>{t('contact.nameLabel')}</label>
             <input
               id="name"
               name="name"
@@ -156,7 +157,7 @@ export default function ContactPage() {
               value={formData.name}
               onChange={handleChange}
               className={`${styles.input} ${fieldErrors.name ? styles.inputError : ''}`}
-              placeholder="Your name"
+              placeholder={t('contact.namePlaceholder')}
               autoComplete="name"
             />
             {fieldErrors.name && (
@@ -166,7 +167,7 @@ export default function ContactPage() {
 
           {/* Email Field */}
           <div className={styles.field}>
-            <label htmlFor="email" className={styles.label}>Email</label>
+            <label htmlFor="email" className={styles.label}>{t('contact.emailLabel')}</label>
             <input
               id="email"
               name="email"
@@ -174,7 +175,7 @@ export default function ContactPage() {
               value={formData.email}
               onChange={handleChange}
               className={`${styles.input} ${fieldErrors.email ? styles.inputError : ''}`}
-              placeholder="your@email.com"
+              placeholder={t('contact.emailPlaceholder')}
               autoComplete="email"
             />
             {fieldErrors.email && (
@@ -184,14 +185,14 @@ export default function ContactPage() {
 
           {/* Message Field */}
           <div className={styles.field}>
-            <label htmlFor="message" className={styles.label}>Message</label>
+            <label htmlFor="message" className={styles.label}>{t('contact.messageLabel')}</label>
             <textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
               className={`${styles.textarea} ${fieldErrors.message ? styles.inputError : ''}`}
-              placeholder="What's on your mind?"
+              placeholder={t('contact.messagePlaceholder')}
               rows={6}
             />
             {fieldErrors.message && (
@@ -206,7 +207,7 @@ export default function ContactPage() {
             disabled={loading}
             aria-busy={loading}
           >
-            {loading ? 'Sending…' : 'Send Message'}
+            {loading ? t('contact.sending') : t('contact.submit')}
           </button>
         </form>
       </section>

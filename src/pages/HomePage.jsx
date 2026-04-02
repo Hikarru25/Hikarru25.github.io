@@ -1,6 +1,7 @@
 // HomePage.jsx — Home page at route "/"
 // Sections: Hero → Technical Skills → Soft Skills
 import { Code2, Server, Database, GitBranch, Lightbulb, MessageSquare, BookOpen, Target } from 'lucide-react'
+import { useLanguage } from '../hooks/useLanguage'
 import styles from './HomePage.module.css'
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -68,22 +69,19 @@ function SkillCard({ icon, title, text }) {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function HomePage() {
+  const { t } = useLanguage()
+
   return (
     <div className={styles.page}>
 
       {/* ── Hero Section ───────────────────────────────────────────────────── */}
       <section className={styles.hero}>
         <div className={styles.heroText}>
-          <p className={styles.heroGreeting}>Hi, I'm</p>
-          <h1 className={styles.heroName}>Jenny</h1>
-          <p className={styles.heroTitle}>Full Stack Developer</p>
-          <p className={styles.heroBio}>
-            With 15 years in health tech business strategy, I now build full-stack
-            products end to end — from database schema to polished UI. I bridge
-            the gap between business needs and technical execution, turning complex
-            problems into clean, maintainable solutions.
-          </p>
-          <a href="/contact" className={styles.heroBtn}>Get in touch</a>
+          <p className={styles.heroGreeting}>{t('home.greeting')}</p>
+          <h1 className={styles.heroName}>{t('home.name')}</h1>
+          <p className={styles.heroTitle}>{t('home.role')}</p>
+          <p className={styles.heroBio}>{t('home.bio')}</p>
+          <a href="/contact" className={styles.heroBtn}>{t('home.cta')}</a>
         </div>
 
         <div className={styles.heroImageWrapper}>
@@ -109,8 +107,8 @@ export default function HomePage() {
             Replace with: <img src={skillsImage} alt="Visual representation of technical skills" className={styles.sectionIllustration} />
             and add: import skillsImage from '../assets/skills-image.png'
           */}
-          <h2 className={styles.sectionTitle}>Technical Skills</h2>
-          <p className={styles.sectionSubtitle}>Tools and technologies I work with</p>
+          <h2 className={styles.sectionTitle}>{t('home.techTitle')}</h2>
+          <p className={styles.sectionSubtitle}>{t('home.techSubtitle')}</p>
         </div>
         <div className={styles.grid}>
           {techSkills.map((skill) => (
@@ -122,8 +120,8 @@ export default function HomePage() {
       {/* ── Soft Skills Section ─────────────────────────────────────────────── */}
       <section className={`${styles.section} ${styles.sectionAlt}`}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>What I Bring to the Table</h2>
-          <p className={styles.sectionSubtitle}>Beyond the code</p>
+          <h2 className={styles.sectionTitle}>{t('home.softTitle')}</h2>
+          <p className={styles.sectionSubtitle}>{t('home.softSubtitle')}</p>
         </div>
         <div className={styles.grid}>
           {softSkills.map((skill) => (

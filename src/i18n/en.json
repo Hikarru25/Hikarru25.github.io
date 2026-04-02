@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "links": "Links",
+    "contact": "Contact"
+  },
+  "home": {
+    "greeting": "Hi, I'm",
+    "name": "Jenny",
+    "role": "Full Stack Developer",
+    "bio": "With 15 years in health tech business strategy, I now build full-stack products end to end — from database schema to polished UI. I bridge the gap between business needs and technical execution, turning complex problems into clean, maintainable solutions.",
+    "cta": "Get in touch",
+    "techTitle": "Technical Skills",
+    "techSubtitle": "Tools and technologies I work with",
+    "softTitle": "What I Bring to the Table",
+    "softSubtitle": "Beyond the code"
+  },
+  "portfolio": {
+    "title": "Portfolio & Résumé",
+    "subtitle": "My background, experience, and the projects I've built.",
+    "downloadCV": "Download CV",
+    "downloadFull": "Download Full CV (PDF)",
+    "ctaText": "Want the full picture?",
+    "educationTitle": "Education",
+    "workTitle": "Work Experience",
+    "projectsTitle": "Projects"
+  },
+  "links": {
+    "title": "Links",
+    "subtitle": "Find me around the web"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "subtitle": "Have a project in mind or just want to say hello? Fill out the form below.",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "namePlaceholder": "Your name",
+    "emailPlaceholder": "your@email.com",
+    "messagePlaceholder": "What's on your mind?",
+    "submit": "Send Message",
+    "sending": "Sending…",
+    "success": "Message sent! I'll get back to you soon.",
+    "error": "Something went wrong. Please try again.",
+    "errName": "Name is required",
+    "errEmail": "Email is required",
+    "errEmailFormat": "Please enter a valid email address",
+    "errMessage": "Message is required"
+  },
+  "footer": {
+    "copyright": "© 2026 Jenny. All rights reserved."
+  }
+}

@@ -1,24 +1,22 @@
 // Header.jsx — Sticky top navigation
-// Desktop (>768px): logo + horizontal text nav + theme toggle
-// Mobile (≤768px): logo + theme toggle — nav moves to bottom (see Footer.jsx)
+// Desktop (>768px): logo + horizontal text nav + theme toggle + language switcher
+// Mobile (≤768px): logo + controls — nav moves to bottom (see Footer.jsx)
 import { NavLink } from 'react-router-dom'
 import { Sun, Moon } from 'lucide-react'
 import { useTheme } from '../../hooks/useTheme'
+import { useLanguage } from '../../hooks/useLanguage'
 import styles from './Header.module.css'
-
-// TODO: Replace logoPlaceholder with your AI-generated logo image
-// Example: import logo from '../../assets/logo.png'
-// Document the AI tool used to generate it here
-
-const navLinks = [
-  { to: '/', label: 'Home', end: true },
-  { to: '/portfolio', label: 'Portfolio' },
-  { to: '/links', label: 'Links' },
-  { to: '/contact', label: 'Contact' },
-]
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme()
+  const { lang, t, toggleLanguage } = useLanguage()
+
+  const navLinks = [
+    { to: '/', label: t('nav.home'), end: true },
+    { to: '/portfolio', label: t('nav.portfolio') },
+    { to: '/links', label: t('nav.links') },
+    { to: '/contact', label: t('nav.contact') },
+  ]
 
   return (
     <header className={styles.header}>
@@ -42,14 +40,25 @@ export default function Header() {
         ))}
       </nav>
 
-      {/* Theme toggle: shows Moon in light mode, Sun in dark mode */}
-      <button
-        className={styles.themeToggle}
-        onClick={toggleTheme}
-        aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-      >
-        {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-      </button>
+      <div className={styles.controls}>
+        {/* Theme toggle: Moon in light mode, Sun in dark mode */}
+        <button
+          className={styles.themeToggle}
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+
+        {/* Language switcher: shows the OTHER language as the clickable label */}
+        <button
+          className={styles.langToggle}
+          onClick={toggleLanguage}
+          aria-label="Switch language"
+        >
+          {lang === 'en' ? 'FR' : 'EN'}
+        </button>
+      </div>
     </header>
   )
 }

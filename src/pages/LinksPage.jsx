@@ -1,6 +1,7 @@
 // LinksPage.jsx — Links page at route "/links"
 // Displays a grid of curated external link cards
 import { ExternalLink } from 'lucide-react'
+import { useLanguage } from '../hooks/useLanguage'
 import styles from './LinksPage.module.css'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -90,11 +91,13 @@ function LinkCard({ title, description, url, image, imageAlt, color }) {
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function LinksPage() {
+  const { t } = useLanguage()
+
   return (
     <div className={styles.page}>
       <section className={styles.pageHeader}>
-        <h1 className={styles.pageTitle}>Links</h1>
-        <p className={styles.pageSubtitle}>Find me across the web</p>
+        <h1 className={styles.pageTitle}>{t('links.title')}</h1>
+        <p className={styles.pageSubtitle}>{t('links.subtitle')}</p>
       </section>
 
       <section className={styles.grid}>

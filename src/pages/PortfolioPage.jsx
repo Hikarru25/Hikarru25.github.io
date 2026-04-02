@@ -1,6 +1,7 @@
 // PortfolioPage.jsx — Portfolio / Resume page at route "/portfolio"
 // Sections: Page Header → Education → Work Experience → Projects → Download CV
 import { GraduationCap, Briefcase, FolderGit2, Download } from 'lucide-react'
+import { useLanguage } from '../hooks/useLanguage'
 import styles from './PortfolioPage.module.css'
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -112,6 +113,8 @@ function ProjectCard({ name, tech, description, image, imageAlt }) {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function PortfolioPage() {
+  const { t } = useLanguage()
+
   return (
     <div className={styles.page}>
 
@@ -123,10 +126,8 @@ export default function PortfolioPage() {
           Replace the div below with:
           <img src={portfolioImg} alt="Portfolio page header illustration" className={styles.headerIllustration} />
         */}
-        <h1 className={styles.pageTitle}>Portfolio & Résumé</h1>
-        <p className={styles.pageSubtitle}>
-          My background, experience, and the projects I've built.
-        </p>
+        <h1 className={styles.pageTitle}>{t('portfolio.title')}</h1>
+        <p className={styles.pageSubtitle}>{t('portfolio.subtitle')}</p>
         <a
           href="/assets/jenny-cv.pdf"
           download
@@ -134,7 +135,7 @@ export default function PortfolioPage() {
           aria-label="Download Jenny's CV as PDF"
         >
           <Download size={18} />
-          Download CV
+          {t('portfolio.downloadCV')}
         </a>
       </section>
 
@@ -142,7 +143,7 @@ export default function PortfolioPage() {
       <section className={styles.section}>
         <div className={styles.sectionTitle}>
           <GraduationCap size={24} />
-          <h2>Education</h2>
+          <h2>{t('portfolio.educationTitle')}</h2>
         </div>
         <div className={styles.timeline}>
           {education.map((item) => (
@@ -161,7 +162,7 @@ export default function PortfolioPage() {
       <section className={`${styles.section} ${styles.sectionAlt}`}>
         <div className={styles.sectionTitle}>
           <Briefcase size={24} />
-          <h2>Work Experience</h2>
+          <h2>{t('portfolio.workTitle')}</h2>
         </div>
         <div className={styles.timeline}>
           {workExperience.map((item) => (
@@ -180,7 +181,7 @@ export default function PortfolioPage() {
       <section className={styles.section}>
         <div className={styles.sectionTitle}>
           <FolderGit2 size={24} />
-          <h2>Projects</h2>
+          <h2>{t('portfolio.projectsTitle')}</h2>
         </div>
         <div className={styles.projectsGrid}>
           {projects.map((project) => (
@@ -191,7 +192,7 @@ export default function PortfolioPage() {
 
       {/* ── Bottom Download CTA ─────────────────────────────────────────────── */}
       <section className={`${styles.section} ${styles.sectionCta}`}>
-        <p className={styles.ctaText}>Want the full picture?</p>
+        <p className={styles.ctaText}>{t('portfolio.ctaText')}</p>
         <a
           href="/assets/jenny-cv.pdf"
           download
@@ -199,7 +200,7 @@ export default function PortfolioPage() {
           aria-label="Download Jenny's CV as PDF"
         >
           <Download size={18} />
-          Download Full CV (PDF)
+          {t('portfolio.downloadFull')}
         </a>
       </section>
 

@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 // GitHub and LinkedIn use inline SVGs — brand logos were removed from lucide-react v0.263+
 // Using inline SVGs ensures we match official brand guidelines exactly
 import { Home, Briefcase, Link2, Mail } from 'lucide-react'
+import { useLanguage } from '../../hooks/useLanguage'
 import styles from './Footer.module.css'
 
 // Inline SVG brand icons — more reliable than any icon library for logos
@@ -25,14 +26,16 @@ function LinkedInIcon({ size = 20 }) {
   )
 }
 
-const mobileNavLinks = [
-  { to: '/', icon: <Home size={24} />, label: 'Home', end: true },
-  { to: '/portfolio', icon: <Briefcase size={24} />, label: 'Portfolio' },
-  { to: '/links', icon: <Link2 size={24} />, label: 'Links' },
-  { to: '/contact', icon: <Mail size={24} />, label: 'Contact' },
-]
-
 export default function Footer() {
+  const { t } = useLanguage()
+
+  const mobileNavLinks = [
+    { to: '/', icon: <Home size={24} />, label: t('nav.home'), end: true },
+    { to: '/portfolio', icon: <Briefcase size={24} />, label: t('nav.portfolio') },
+    { to: '/links', icon: <Link2 size={24} />, label: t('nav.links') },
+    { to: '/contact', icon: <Mail size={24} />, label: t('nav.contact') },
+  ]
+
   return (
     <>
       <footer className={styles.footer}>
@@ -59,7 +62,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <p className={styles.copyright}>© 2026 Jenny. All rights reserved.</p>
+        <p className={styles.copyright}>{t('footer.copyright')}</p>
       </footer>
 
       {/* Mobile bottom icon nav — fixed at viewport bottom, only visible ≤768px */}
