@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 import { Sun, Moon } from 'lucide-react'
 import { useTheme } from '../../hooks/useTheme'
 import { useLanguage } from '../../hooks/useLanguage'
+import logo from '../../assets/logo.png'
 import styles from './Header.module.css'
 
 export default function Header() {
@@ -21,8 +22,7 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <NavLink to="/" className={styles.logo} aria-label="Jenny's personal logo — go to home">
-        {/* Replace this div with: <img src={logo} alt="Jenny's personal logo" className={styles.logoImg} /> */}
-        <div className={styles.logoPlaceholder}>J</div>
+        <img src={logo} alt="Jenny's personal logo" className={styles.logoImg} />
       </NavLink>
 
       <nav className={styles.nav} aria-label="Main navigation">
