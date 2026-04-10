@@ -14,38 +14,181 @@
 .hero {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  padding: 5rem 6rem;
-  min-height: 90vh;
+  gap: 4rem;
+  padding: 2rem 6rem;
+  min-height: calc(100vh - 64px);
 }
 
-.heroText {
+/* ── Profile Card (left) ─────────────────────────────────────────────────── */
+.profileCard {
+  flex-shrink: 0;
+  width: 300px;
+  background: var(--accent-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.profilePhotoWrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profilePhotoWrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.25);
+}
+
+/* Real photo — swap in when image is ready */
+.profilePhoto {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder shown until real photo is added */
+.profilePhotoPlaceholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-border) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.profileInitial {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.profileName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+  text-align: center;
+}
+
+.profileRole {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 0;
+  text-align: center;
+}
+
+.profileLocation {
+  font-size: 0.82rem;
+  color: var(--text);
+  opacity: 0.65;
+  margin: 0;
+}
+
+.profileSocials {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.25rem 0;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.socialLink:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Slide-to-contact button */
+.sliderBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  margin-top: 0.4rem;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sliderBtn:hover {
+  background: rgba(139, 92, 246, 0.25);
+}
+
+.sliderThumb {
+  position: absolute;
+  left: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--accent);
+  border-radius: 999px;
+  color: #fff;
+  flex-shrink: 0;
+  transition: left 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+}
+
+.sliderBtn:hover .sliderThumb {
+  left: calc(100% - 48px);
+}
+
+.sliderLabel {
+  width: 100%;
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  padding-left: 44px;
+}
+
+/* ── Hero Content (right) ────────────────────────────────────────────────── */
+.heroContent {
   flex: 1;
-  max-width: 560px;
 }
 
 .heroGreeting {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--text);
-  margin-bottom: 0.25rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+  margin: 0 0 0.25rem;
+  text-align: left;
 }
 
 .heroName {
-  font-size: clamp(3rem, 7vw, 5.5rem); /* clamp = responsive font size: min, preferred, max */
+  font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 800;
   line-height: 1;
-  margin: 0 0 0.4rem;
   color: var(--text-h);
-}
-
-.heroTitle {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-  color: var(--accent);
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin: 0 0 1.5rem;
 }
 
 .heroBio {
@@ -53,7 +196,17 @@
   line-height: 1.8;
   color: var(--text);
   margin-bottom: 2rem;
-  max-width: 480px;
+  max-width: 520px;
+  text-align: justify;
+}
+
+/* ── Hero CTAs ───────────────────────────────────────────────────────────── */
+.heroCtas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 .heroBtn {
@@ -67,41 +220,28 @@
   text-decoration: none;
   transition: opacity 0.2s ease;
 }
+
 .heroBtn:hover {
   opacity: 0.85;
 }
 
-/* Hero image area */
-.heroImageWrapper {
-  flex-shrink: 0;
+.heroLinkBtn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-/* Placeholder shown until a real AI-generated image is added */
-.heroImagePlaceholder {
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  background: var(--accent-bg);
-  border: 3px solid var(--accent-border);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.heroImageInitial {
-  font-size: 8rem;
-  font-weight: 800;
+.heroLinkBtn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.2);
+  border-color: var(--accent);
   color: var(--accent);
-  line-height: 1;
-}
-
-/* Real image class — uncomment in JSX when the AI image is ready */
-.heroImage {
-  width: 320px;
-  height: 320px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--accent-border);
 }
 
 /* ── Shared Section Styles ────────────────────────────────────────────────── */
@@ -131,68 +271,156 @@
   font-size: 1rem;
 }
 
-/* ── Skills Grid ──────────────────────────────────────────────────────────── */
-/* auto-fill + minmax = columns automatically wrap at 240px min width */
-/* This means 4 cols on desktop, 2 on tablet, 1 on mobile — no media queries needed */
-.grid {
+/* ── Technical Skills Grid ───────────────────────────────────────────────── */
+.skillsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
-/* ── Skill Card ───────────────────────────────────────────────────────────── */
-.card {
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.75rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+/* ── Skill card ── */
+.skillCard {
+  border: 1.5px solid var(--card-color);
+  border-top: 3px solid var(--card-color);
+  border-radius: 14px;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-.card:hover {
+
+.skillCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
+}
+
+/* ── Tech icons inside cards ── */
+.cardIcons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+  min-height: 44px;
+}
+
+.techIcon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.cardLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--card-color);
+  margin: 0 0 1rem;
+}
+
+/* ── Tag pills ── */
+.tagsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tag {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--tag-color);
+  color: var(--tag-color);
+  background: var(--tag-bg);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tag:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
 }
 
-.cardIcon {
-  color: var(--accent);
-  margin-bottom: 1rem;
+/* ── Soft Skills Grid ────────────────────────────────────────────────────── */
+.softGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
 }
 
-.cardTitle {
-  font-size: 1.05rem;
+.softCard {
+  border: 1.5px solid var(--border);
+  border-top: 3px solid var(--soft-color);
+  border-radius: 14px;
+  background: var(--bg);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.softCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
+}
+
+.softIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--soft-color) 12%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--soft-color);
+}
+
+.softTitle {
+  font-size: 1rem;
   font-weight: 700;
   color: var(--text-h);
-  margin-bottom: 0.5rem;
+  margin: 0;
 }
 
-.cardText {
+.softDesc {
   font-size: 0.9rem;
-  line-height: 1.7;
+  line-height: 1.65;
   color: var(--text);
+  margin: 0;
 }
 
 /* ── Responsive — Mobile (≤ 768px) ───────────────────────────────────────── */
 @media (max-width: 768px) {
-  /* Hero stacks vertically on mobile, image goes below text */
   .hero {
-    flex-direction: column-reverse; /* image on top, text below */
-    padding: 3rem 1.5rem;
+    flex-direction: column;
+    padding: 2rem 1.5rem 5rem;
     min-height: unset;
-    text-align: center;
+    gap: 2rem;
+  }
+
+  .profileCard {
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+
+  .heroHeadline {
+    font-size: clamp(2rem, 8vw, 3rem);
   }
 
   .heroBio {
     max-width: 100%;
   }
 
-  .heroImagePlaceholder,
-  .heroImage {
-    width: 180px;
-    height: 180px;
+  .stats {
+    flex-wrap: wrap;
+    gap: 1.5rem;
   }
 
-  .heroImageInitial {
-    font-size: 5rem;
+  .statDivider {
+    display: none;
   }
 
   .section {
@@ -201,6 +429,12 @@
 
   /* On mobile the grid becomes a single column */
   .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Skills and soft skills: single column on mobile */
+  .skillsGrid,
+  .softGrid {
     grid-template-columns: 1fr;
   }
 }
