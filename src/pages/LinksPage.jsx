@@ -5,44 +5,37 @@ import { useLanguage } from '../hooks/useLanguage'
 import styles from './LinksPage.module.css'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
-// To add a new link: add one object to this array — no JSX changes needed
-const links = [
-  {
-    id: 1,
-    title: 'GitHub',
-    description:
-      'Browse my public repositories, contributions, and open source work. This is where all my code lives.',
-    url: 'https://github.com/Hikarru25',
-    // AI-generated using: [Add tool name — e.g. Midjourney / DALL·E / Adobe Firefly]
-    // Replace null with: import githubImg from '../assets/link-github.png'
-    image: null,
-    imageAlt: 'GitHub profile thumbnail',
-    // Fallback icon color when no image is set
-    color: '#24292e',
-  },
-  {
-    id: 2,
-    title: 'LinkedIn',
-    description:
-      'My professional profile: work history in health technology and software development, recommendations, and career highlights.',
-    url: 'https://linkedin.com/in/jenny', // 🔁 Replace with your real LinkedIn URL
-    // AI-generated using: [Add tool name]
-    image: null,
-    imageAlt: 'LinkedIn profile thumbnail',
-    color: '#0077b5',
-  },
-  {
-    id: 3,
-    title: 'YouTube',
-    description:
-      'My video content — elevator pitches, project demos, and walkthroughs of the things I build.',
-    url: 'https://youtube.com/@jenny', // 🔁 Replace with your real YouTube URL
-    // AI-generated using: [Add tool name]
-    image: null,
-    imageAlt: 'YouTube channel thumbnail',
-    color: '#ff0000',
-  },
-]
+function getLinks(t) {
+  return [
+    {
+      id: 1,
+      title: 'GitHub',
+      description: t('links.githubDesc'),
+      url: 'https://github.com/Hikarru25',
+      image: null,
+      imageAlt: 'GitHub profile thumbnail',
+      color: '#24292e',
+    },
+    {
+      id: 2,
+      title: 'LinkedIn',
+      description: t('links.linkedinDesc'),
+      url: 'https://ca.linkedin.com/in/jihanesakhi',
+      image: null,
+      imageAlt: 'LinkedIn profile thumbnail',
+      color: '#0077b5',
+    },
+    {
+      id: 3,
+      title: 'YouTube',
+      description: t('links.youtubeDesc'),
+      url: 'https://www.youtube.com/@HikarruCBXX',
+      image: null,
+      imageAlt: 'YouTube channel thumbnail',
+      color: '#ff0000',
+    },
+  ]
+}
 
 // ─── LinkCard ─────────────────────────────────────────────────────────────────
 // Props: title, description, url, image, imageAlt, color
@@ -92,6 +85,7 @@ function LinkCard({ title, description, url, image, imageAlt, color }) {
 // ─── Page ─────────────────────────────────────────────────────────────────────
 export default function LinksPage() {
   const { t } = useLanguage()
+  const links = getLinks(t)
 
   return (
     <div className={styles.page}>
