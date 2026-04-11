@@ -133,6 +133,16 @@
   background: var(--color-bg, #f8f9fa);
 }
 
+/* Email link in table */
+.emailLink {
+  color: var(--color-accent, #6c63ff);
+  text-decoration: none;
+}
+
+.emailLink:hover {
+  text-decoration: underline;
+}
+
 /* Date column — smaller, no-wrap */
 .dateCell {
   color: var(--color-text-muted, #666);

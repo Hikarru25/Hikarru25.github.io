@@ -160,7 +160,14 @@ export default function BackOfficePage() {
                 {messages.map((msg) => (
                   <tr key={msg.id} className={styles.row}>
                     <td>{msg.name}</td>
-                    <td>{msg.email}</td>
+                    <td>
+                      <a
+                        href={`mailto:${msg.email}`}
+                        className={styles.emailLink}
+                      >
+                        {msg.email}
+                      </a>
+                    </td>
                     <td className={styles.dateCell}>{formatDate(msg.created_at)}</td>
                     <td className={styles.actionsCell}>
                       {/* View button → opens the modal with this message */}
