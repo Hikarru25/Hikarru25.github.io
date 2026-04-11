@@ -1,0 +1,790 @@
+/* PortfolioPage.module.css */
+
+/* ── Page wrapper ──────────────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Page Header ──────────────────────────────────────────────────── */
+.pageHeader {
+  padding: 5rem 6rem 3.5rem;
+  border-bottom: 1px solid var(--border);
+  text-align: center;
+}
+
+.pageHeaderInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.pageEyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.6rem;
+}
+
+.pageTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text-h);
+  margin: 0 0 0.5rem;
+  line-height: 1.1;
+}
+
+.pageSubtitle {
+  color: var(--text);
+  font-size: 1rem;
+  max-width: 480px;
+  margin: 0 auto;
+  opacity: 0.7;
+}
+
+/* ── Header actions ─────────────────────────────────────────────────── */
+.pageHeaderActions {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+  align-items: stretch;
+  justify-content: center;
+  margin-top: 1.25rem;
+  flex-shrink: 0;
+}
+
+.anchorBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background: transparent;
+  color: var(--accent);
+  border: 1.5px solid var(--accent);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.anchorBtn:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ── Download Button ────────────────────────────────────────────────── */
+.downloadBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.5rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+.downloadBtn:hover { opacity: 0.85; }
+
+/* ── Sections ─────────────────────────────────────────────────────────── */
+.section {
+  padding: 4rem 6rem;
+}
+
+.sectionAlt {
+  background: var(--accent-bg);
+}
+
+.sectionCta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+  border-top: 1px solid var(--border);
+}
+
+.ctaText {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 0;
+}
+
+/* Section heading row: icon + title + horizontal rule */
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.sectionIcon {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.sectionLine {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── Projects Grid ──────────────────────────────────────────────────── */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Project Card ──────────────────────────────────────────────────── */
+.projectCard {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+.projectCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(139, 92, 246, 0.18);
+  border-color: var(--accent);
+}
+
+/* Numbered badge — top-left corner */
+.projectNum {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 1px solid var(--accent-border);
+  border-radius: 6px;
+  padding: 2px 8px;
+  z-index: 1;
+}
+
+/* Image / placeholder */
+.projectImageWrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--accent-bg);
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.projectCard:hover .projectImage {
+  transform: scale(1.03);
+}
+
+.projectImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+/* ── Tech icon mosaic ──────────────────────────────────────────────────── */
+.projectMosaic {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mosaicCode {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 1.2rem;
+  font-family: 'Courier New', monospace;
+  font-size: 0.68rem;
+  line-height: 1.7;
+  color: var(--accent);
+  opacity: 0.13;
+  overflow: hidden;
+  white-space: pre;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mosaicIcons {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1.25rem;
+}
+
+.mosaicIcon {
+  width: 42px;
+  height: 42px;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
+  transition: transform 0.2s ease;
+}
+
+.projectCard:hover .mosaicIcon {
+  transform: scale(1.12);
+}
+
+/* ── Certifications ──────────────────────────────────────────────────────── */
+.certsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.certCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 1rem 1rem 1rem 1.1rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.certCard:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.certCardTop {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.certLogo {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.certLogoImg {
+  height: 40px;
+  width: auto;
+  max-width: 120px;
+  object-fit: contain;
+  display: block;
+}
+
+.certLogoCircle {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.certLogoInitials {
+  line-height: 1;
+}
+
+.certIssuer {
+  font-size: 0.68rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0;
+}
+
+.certName {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+  line-height: 1.35;
+}
+
+.certMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.certBadge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.certServices {
+  font-size: 0.68rem;
+  color: var(--text);
+  opacity: 0.55;
+  margin: 0;
+  margin-top: auto;
+}
+
+/* Card body */
+.projectBody {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.projectName {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.techTag {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.projectDesc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+  flex: 1;
+}
+
+/* GitHub + Live buttons */
+.projectLinks {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.25rem;
+}
+
+.linkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1.5px solid var(--border);
+  color: var(--text);
+  background: transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.linkBtn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.linkBtnFill {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.linkBtnFill:hover {
+  opacity: 0.85;
+  color: #fff;
+}
+
+/* ── Timeline (Work + Education) ──────────────────────────────────────── */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid var(--border);
+  padding-left: 2rem;
+  margin-left: 0.5rem;
+}
+
+.timelineItem {
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+.timelineItem:last-child { padding-bottom: 0; }
+
+.timelineDot {
+  position: absolute;
+  left: -2.6rem;
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.timelineContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.timelineHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.timelineTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.timelineDates {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.timelineSubtitle {
+  font-size: 0.92rem;
+  color: var(--text);
+  font-weight: 500;
+  margin: 0;
+  opacity: 0.7;
+}
+
+.timelineDesc {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0.25rem 0 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .pageHeader,
+  .section {
+    padding: 3rem 1.5rem;
+  }
+
+  .pageHeaderInner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .timelineHeader {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+}
+
+
+/* ── Page Header ──────────────────────────────────────────────────────────── */
+.pageHeader {
+  padding: 5rem 6rem 4rem;
+  text-align: center;
+  background: var(--accent-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pageTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  color: var(--text-h);
+}
+
+.pageSubtitle {
+  color: var(--text);
+  font-size: 1.05rem;
+  max-width: 500px;
+}
+
+/* ── Download Button (reused in header and bottom CTA) ───────────────────── */
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.downloadBtn:hover {
+  opacity: 0.85;
+}
+
+/* ── Shared Section Styles ────────────────────────────────────────────────── */
+.section {
+  padding: 4rem 6rem;
+}
+
+.sectionAlt {
+  background: var(--accent-bg);
+}
+
+.sectionCta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.ctaText {
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+/* Section title row — icon + h2 side by side */
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+  color: var(--accent);
+}
+.sectionTitle h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+}
+
+/* ── Timeline (Education & Work Experience) ───────────────────────────────── */
+/* A vertical line on the left with dots marking each item */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--border);
+  padding-left: 2rem;
+  margin-left: 0.5rem;
+}
+
+.timelineItem {
+  position: relative;
+  padding-bottom: 2.5rem;
+}
+.timelineItem:last-child {
+  padding-bottom: 0;
+}
+
+/* The colored dot on the timeline line */
+.timelineDot {
+  position: absolute;
+  left: -2.6rem;
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.timelineContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.timelineHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.timelineTitle {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.timelineDates {
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.timelineSubtitle {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+  margin: 0;
+}
+
+.timelineDesc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0.25rem 0 0;
+}
+
+/* ── Projects Grid ────────────────────────────────────────────────────────── */
+.projectsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Project Card ─────────────────────────────────────────────────────────── */
+.projectCard {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--bg);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.projectCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.2);
+  border-color: var(--accent);
+}
+
+.projectImageWrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholder until AI image is added */
+.projectImagePlaceholder {
+  width: 100%;
+  height: 100%;
+  background: var(--accent-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.projectBody {
+  padding: 1.25rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.projectName {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+}
+
+/* Tech stack pill tags */
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.techTag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.projectDesc {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ── Responsive — Mobile (≤ 768px) ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .pageHeader,
+  .section {
+    padding: 3rem 1.5rem;
+  }
+
+  .timelineHeader {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .projectsGrid {
+    grid-template-columns: 1fr;
+  }
+}

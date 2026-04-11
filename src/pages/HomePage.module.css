@@ -1,0 +1,440 @@
+/* HomePage.module.css
+   All styles are scoped to HomePage.jsx via CSS Modules.
+   CSS Modules means class names like `.hero` become unique hashes at build time
+   → zero risk of clashing with other components' styles.
+*/
+
+/* ── Page wrapper ─────────────────────────────────────────────────────────── */
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Hero Section ─────────────────────────────────────────────────────────── */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  padding: 2rem 6rem;
+  min-height: calc(100vh - 64px);
+}
+
+/* ── Profile Card (left) ─────────────────────────────────────────────────── */
+.profileCard {
+  flex-shrink: 0;
+  width: 300px;
+  background: var(--accent-bg);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.profilePhotoWrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profilePhotoWrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.25);
+}
+
+/* Real photo — swap in when image is ready */
+.profilePhoto {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder shown until real photo is added */
+.profilePhotoPlaceholder {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent-border) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.profileInitial {
+  font-size: 5rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.profileName {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+  text-align: center;
+}
+
+.profileRole {
+  font-size: 0.9rem;
+  color: var(--text);
+  margin: 0;
+  text-align: center;
+}
+
+.profileLocation {
+  font-size: 0.82rem;
+  color: var(--text);
+  opacity: 0.65;
+  margin: 0;
+}
+
+.profileSocials {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.25rem 0;
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.socialLink:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Slide-to-contact button */
+.sliderBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 52px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  margin-top: 0.4rem;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.sliderBtn:hover {
+  background: rgba(139, 92, 246, 0.25);
+}
+
+.sliderThumb {
+  position: absolute;
+  left: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--accent);
+  border-radius: 999px;
+  color: #fff;
+  flex-shrink: 0;
+  transition: left 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+}
+
+.sliderBtn:hover .sliderThumb {
+  left: calc(100% - 48px);
+}
+
+.sliderLabel {
+  width: 100%;
+  text-align: center;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  pointer-events: none;
+  padding-left: 44px;
+}
+
+/* ── Hero Content (right) ────────────────────────────────────────────────── */
+.heroContent {
+  flex: 1;
+}
+
+.heroGreeting {
+  font-size: 1rem;
+  color: var(--text);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin: 0 0 0.25rem;
+  text-align: left;
+}
+
+.heroName {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  line-height: 1;
+  color: var(--text-h);
+  margin: 0 0 1.5rem;
+}
+
+.heroBio {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text);
+  margin-bottom: 2rem;
+  max-width: 520px;
+  text-align: justify;
+}
+
+/* ── Hero CTAs ───────────────────────────────────────────────────────────── */
+.heroCtas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.heroBtn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.heroBtn:hover {
+  opacity: 0.85;
+}
+
+.heroLinkBtn {
+  display: inline-block;
+  padding: 0.85rem 2rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.heroLinkBtn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(139, 92, 246, 0.2);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ── Shared Section Styles ────────────────────────────────────────────────── */
+.section {
+  padding: 5rem 6rem;
+}
+
+/* Alternate background for soft skills section — creates visual separation */
+.sectionAlt {
+  background: var(--accent-bg);
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-h);
+  margin-bottom: 0.5rem;
+}
+
+.sectionSubtitle {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+/* ── Technical Skills Grid ───────────────────────────────────────────────── */
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Skill card ── */
+.skillCard {
+  border: 1.5px solid var(--card-color);
+  border-top: 3px solid var(--card-color);
+  border-radius: 14px;
+  background: var(--card-bg);
+  padding: 1.5rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.skillCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
+}
+
+/* ── Tech icons inside cards ── */
+.cardIcons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+  min-height: 44px;
+}
+
+.techIcon {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.cardLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--card-color);
+  margin: 0 0 1rem;
+}
+
+/* ── Tag pills ── */
+.tagsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.tag {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--tag-color);
+  color: var(--tag-color);
+  background: var(--tag-bg);
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tag:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
+}
+
+/* ── Soft Skills Grid ────────────────────────────────────────────────────── */
+.softGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.softCard {
+  border: 1.5px solid var(--border);
+  border-top: 3px solid var(--soft-color);
+  border-radius: 14px;
+  background: var(--bg);
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.softCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
+}
+
+.softIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--soft-color) 12%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--soft-color);
+}
+
+.softTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-h);
+  margin: 0;
+}
+
+.softDesc {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ── Responsive — Mobile (≤ 768px) ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    padding: 2rem 1.5rem 5rem;
+    min-height: unset;
+    gap: 2rem;
+  }
+
+  .profileCard {
+    width: 100%;
+    max-width: 320px;
+    align-self: center;
+  }
+
+  .heroHeadline {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .heroBio {
+    max-width: 100%;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .statDivider {
+    display: none;
+  }
+
+  .section {
+    padding: 3rem 1.5rem;
+  }
+
+  /* On mobile the grid becomes a single column */
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Skills and soft skills: single column on mobile */
+  .skillsGrid,
+  .softGrid {
+    grid-template-columns: 1fr;
+  }
+}
