@@ -1,0 +1,11 @@
+<!doctype html>
+<html>
+  <head>
+    <script>
+      // GitHub Pages SPA redirect fix
+      // Redirects all 404s back to index.html so React Router can handle them
+      const path = window.location.pathname;
+      window.location.replace('/?redirect=' + encodeURIComponent(path));
+    </script>
+  </head>
+</html>
